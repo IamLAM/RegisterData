@@ -6,7 +6,9 @@ function truthCheck(collection, pre) {
       if (collection[c].hasOwnProperty(pre) && Boolean(collection[c][pre])) {
         counter++;
       }
+      console.log(collection[c]);
     }
+    
 
    // return counter == collection.length;
   }
