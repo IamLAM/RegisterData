@@ -38,7 +38,10 @@ function checkCashRegister(price, cash, cid) {
 
 
     if (price < cash) {
-        if (dev > box) {
+        if (dev == box) {
+            // return { status: "CLOSED", change: cid };
+            console.log("CLOSED");
+        } else if (dev > box || box < cash) {
             // return {status: "INSUFFICIENT_FUNDS", change: []};
             console.log("INSUFFICIENT_FUNDS");
         } else {
@@ -79,7 +82,7 @@ function checkCashRegister(price, cash, cid) {
                 console.log("is less than Quarter ");
                 change[3][1] += 0.25;
                 cid[3][1] -= 0.25;
-                dev -= 25;
+                dev -= 0.25;
             }
             while (amount[2][1] <= dev && cid[2][1] >= amount[2][1]) {
                 console.log("is less than Dime");
@@ -106,13 +109,10 @@ function checkCashRegister(price, cash, cid) {
         }
 
 
-    } else if (dev == box) {
-        // return { status: "CLOSED", change: cid };
-        console.log("CLOSED");
     } else {
         console.log("Sorry you need more money");
     }
-    console.log("Change: " + dev + " Funds:" + box);
+    console.log("Change: " + dev + " Funds:" + box + "Cash: " + cash);
 
 
 
@@ -131,7 +131,7 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60],
 // ["ONE HUNDRED", 100]]
 
-checkCashRegister(19.5, 20, [
+checkCashRegister(3.26, 100, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.1],
