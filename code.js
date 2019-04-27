@@ -1,7 +1,7 @@
 function howmuch(cid, cash, price) {
 
     let box = 0;
-    let dev = 0;
+
 
     for (var c in cid) {
         box += cid[c][1];
@@ -72,7 +72,7 @@ function checkCashRegister(price, cash, cid) {
 
 
     let box = howmuch(cid, cash, price);
-    dev = cash - price;
+    let dev = cash - price;
 
     if (price < cash) {
         if (dev == box) {
