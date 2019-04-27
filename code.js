@@ -1,3 +1,38 @@
+function howmuch(cid, cash, price) {
+
+    let box = 0;
+    let dev = 0;
+
+    for (var c in cid) {
+        box += cid[c][1];
+
+        console.log(cid[c][1]);
+    }
+    // console.log(box);}
+
+    return box;
+}
+
+function cleanArray(change) {
+    var filter_change = [];
+    let i = 0;
+    while (i <= 8) {
+        if (change[i][1] != 0) {
+
+            //  change[i].splice(i, 1);
+            //change[i] = '*';
+            //change[i].splice();
+            filter_change.push(change[i]);
+        }
+        i++;
+    }
+    return filter_change;
+}
+
+
+
+
+
 function checkCashRegister(price, cash, cid) {
     var change = [
         ["PENNY", 0],
@@ -11,6 +46,8 @@ function checkCashRegister(price, cash, cid) {
         ["ONE HUNDRED", 0]
     ];
 
+
+
     const amount = [
         ["PENNY", 0.01],
         ["NICKEL", 0.05],
@@ -23,27 +60,19 @@ function checkCashRegister(price, cash, cid) {
         ["ONE HUNDRED", 100]
     ];
 
-    let box = 0;
-    let dev = 0;
 
-    // Here is your change, ma'am.
-
-    for (var c in cid) {
-        box += cid[c][1];
-
-        console.log(cid[c][1]);
-    }
-    // console.log(box);}
+    let box = howmuch(cid, cash, price);
     dev = cash - price;
-
 
     if (price < cash) {
         if (dev == box) {
-            // return { status: "CLOSED", change: cid };
+
             console.log("CLOSED");
+            return { status: "CLOSED", change: cid };
         } else if (dev > box || box < cash) {
-            // return {status: "INSUFFICIENT_FUNDS", change: []};
             console.log("INSUFFICIENT_FUNDS");
+            return { status: "INSUFFICIENT_FUNDS", change: [] };
+
         } else {
             let i = 0;
             //while (dev <= 0) {
@@ -96,11 +125,12 @@ function checkCashRegister(price, cash, cid) {
                 cid[1][1] -= 0.05;
                 dev -= 0.05;
             }
-            while (amount[0][1] <= dev && cid[0][1] >= amount[0][1]) {
-                console.log("is less than Penny");
+            while (amount[0][1] <= dev.toFixed(2) && cid[0][1] >= amount[0][1]) {
+
                 change[0][1] += 0.01;
                 cid[0][1] -= 0.01;
                 dev -= 0.01;
+                console.log("is less than Penny" + dev);
             }
 
             //}
@@ -114,9 +144,9 @@ function checkCashRegister(price, cash, cid) {
     }
     console.log("Change: " + dev + " Funds:" + box + "Cash: " + cash);
 
+    let fc = cleanArray(change);
 
-
-    return { status: "OPEN", change: change };
+    return { status: "OPEN", change: fc };
 }
 
 
@@ -131,7 +161,7 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60],
 // ["ONE HUNDRED", 100]]
 
-console.log(checkCashRegister(19.5, 20, [
+console.log(checkCashRegister(3.26, 100, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.1],
@@ -142,3 +172,29 @@ console.log(checkCashRegister(19.5, 20, [
     ["TWENTY", 60],
     ["ONE HUNDRED", 100]
 ]));
+/*
+{
+    status: "OPEN",
+    change: [
+        ["TWENTY", 60],
+        ["TEN", 20],
+        ["FIVE", 15],
+        ["ONE", 1],
+        ["QUARTER", 0.5],
+        ["DIME", 0.2],
+        ["PENNY", 0.04]
+    ]
+}
+
+{
+    status: 'OPEN',
+    change: [
+        ['PENNY', 0.03],
+        ['DIME', 0.2],
+        ['QUARTER', 0.5],
+        ['ONE', 1],
+        ['FIVE', 15],
+        ['TEN', 20],
+        ['TWENTY', 60]
+    ]
+}*/
