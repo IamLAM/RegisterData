@@ -11,6 +11,10 @@ function checkCashRegister(price, cash, cid) {
     // console.log(box);}
     dev = price - cash;
     if (price < cash) {
+        if (dev > box) {
+            // return {status: "INSUFFICIENT_FUNDS", change: []};
+            console.log("INSUFFICIENT_FUNDS");
+        }
 
 
     } else {
