@@ -116,7 +116,7 @@ function checkCashRegister(price, cash, cid) {
 
 
 
-    return change;
+    return { status: "OPEN", change: change };
 }
 
 
@@ -131,7 +131,7 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60],
 // ["ONE HUNDRED", 100]]
 
-checkCashRegister(3.26, 100, [
+console.log(checkCashRegister(19.5, 20, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.1],
@@ -141,4 +141,4 @@ checkCashRegister(3.26, 100, [
     ["TEN", 20],
     ["TWENTY", 60],
     ["ONE HUNDRED", 100]
-]);
+]));
