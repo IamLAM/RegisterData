@@ -36,7 +36,7 @@ function orderArray(fc) {
 
         oa.push(fc[i]);
     }
-
+    oa.shift();
     return oa;
 }
 
@@ -155,7 +155,7 @@ function checkCashRegister(price, cash, cid) {
     console.log("Change: " + dev + " Funds:" + box + "Cash: " + cash);
 
     let fc = cleanArray(change);
-    console.log(fc);
+    console.log("Array cleaned: " + fc);
     let oa = orderArray(fc);
     console.log(oa);
 
