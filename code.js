@@ -5,21 +5,20 @@ function checkCashRegister(price, cash, cid) {
     // Here is your change, ma'am.
 
     for (var c in cid) {
-
-
         box += cid[c][1];
-        // console.log(box);
-
+        console.log(cid[c][1]);
     }
+    // console.log(box);}
     dev = price - cash;
     if (price < cash) {
+
 
     } else {
         console.log("Sorry you need more money");
     }
-    console.log(dev);
-    console.log(cid[c][1]);
-    console.log(box);
+    console.log("Change: " + dev + " Funds:" + box);
+
+
 
     return change;
 }
