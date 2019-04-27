@@ -9,11 +9,13 @@ function checkCashRegister(price, cash, cid) {
         console.log(cid[c][1]);
     }
     // console.log(box);}
-    dev = price - cash;
+    dev = cash - price;
     if (price < cash) {
         if (dev > box) {
             // return {status: "INSUFFICIENT_FUNDS", change: []};
             console.log("INSUFFICIENT_FUNDS");
+        } else if (dev == box) {
+            return { status: "CLOSED", change: cid };
         }
 
 
@@ -39,7 +41,7 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60],
 // ["ONE HUNDRED", 100]]
 
-checkCashRegister(19.5, 20, [
+checkCashRegister(19.5, 2000, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.1],
@@ -50,24 +52,3 @@ checkCashRegister(19.5, 20, [
     ["TWENTY", 60],
     ["ONE HUNDRED", 100]
 ]);
-
-/*
-
-function truthCheck(collection, pre) {
-    var counter = 0;
-
-    for (var c in collection) {
-
-        if (collection[c].hasOwnProperty(pre) && Boolean(collection[c][pre])) {
-            counter++;
-        }
-        console.log(collection[c].user);
-    }
-
-
-    // return counter == collection.length;
-}
-
-
-truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy", "sex": "male" }, { "user": "Laa-Laa", "sex": "female" }, { "user": "Po", "sex": "female" }], "sex");
-*/
