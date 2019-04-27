@@ -29,6 +29,16 @@ function cleanArray(change) {
     return filter_change;
 }
 
+function orderArray(fc) {
+    let oa = [];
+    console.log(fc.length);
+    for (let i = fc.length; i >= 0; i--) {
+
+        oa.push(fc[i]);
+    }
+
+    return oa;
+}
 
 
 
@@ -145,8 +155,11 @@ function checkCashRegister(price, cash, cid) {
     console.log("Change: " + dev + " Funds:" + box + "Cash: " + cash);
 
     let fc = cleanArray(change);
+    console.log(fc);
+    let oa = orderArray(fc);
+    console.log(oa);
 
-    return { status: "OPEN", change: fc };
+    return { status: "OPEN", change: oa };
 }
 
 
@@ -172,29 +185,3 @@ console.log(checkCashRegister(3.26, 100, [
     ["TWENTY", 60],
     ["ONE HUNDRED", 100]
 ]));
-/*
-{
-    status: "OPEN",
-    change: [
-        ["TWENTY", 60],
-        ["TEN", 20],
-        ["FIVE", 15],
-        ["ONE", 1],
-        ["QUARTER", 0.5],
-        ["DIME", 0.2],
-        ["PENNY", 0.04]
-    ]
-}
-
-{
-    status: 'OPEN',
-    change: [
-        ['PENNY', 0.03],
-        ['DIME', 0.2],
-        ['QUARTER', 0.5],
-        ['ONE', 1],
-        ['FIVE', 15],
-        ['TEN', 20],
-        ['TWENTY', 60]
-    ]
-}*/
